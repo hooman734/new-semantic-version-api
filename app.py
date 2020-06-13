@@ -1,24 +1,39 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from helpers.retrieve_v3_semver import resolve_version
 
 app = Flask(__name__)
+CORS(app)
 message = """
-    <div style="background-color:blue; color:white; text-align: center;">
-    <h1>Welcome to NuGet.org api.</h1>
-    <h2> <i> To use correctly, please request a path like: </i> </h2>
-    <h2> <mark>/ api / {package_name} / {major | minor | patch} / json</mark></h2>
-    <br />
-    <hr /> 
-    </div>
+    <html>
+	<div style="background-color:blue; color:white; text-align: center;">
+		<h1>Welcome to NuGet.org api.</h1>
+		<h2>
+			<i> To use correctly, please request a path like: </i>
+		</h2>
+		<h2>
+			<mark>/ api / {package_name} / {major | minor | patch} / json</mark>
+		</h2>
+		<br />
+		<hr />
+	</div>
+</html>
     """
 error_message = """
-    <div style="background-color:Tomato; color:white; text-align: center;">
-    <h1>Error 404</h1>
-    <h2> <i> It happened due to either your request path was not valid or the mentioned package not found. </i> </h2>
-    <h2> <mark>Try again!</mark></h2>
-    <br />
-    <hr /> 
-    </div>
+    <html>
+	<div style="background-color:Tomato; color:white; text-align: center;">
+		<h1>Error 404</h1>
+		<h2>
+			<i> It happened due to either your request path was not valid or the mentioned package not found. </i>
+		</h2>
+		<h2>
+			<mark>Try again!</mark>
+		</h2>
+		<br />
+		<hr />
+	</div>
+</html>
+    
     """
 
 
@@ -43,4 +58,3 @@ def page_not_found(error):
 
 if __name__ == "__main__":
     app.run(debug=False)
-

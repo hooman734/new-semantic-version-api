@@ -21,15 +21,15 @@ def resolve_version(__package_name__, __v_type__):
                         for p in patch_prefix:
                             p_prefix += str(p)
 
-                if __v_type__ == 'major':
-                    max_version = (str(int(major) + 1), minor, patch), '200'
+            if __v_type__ == 'major':
+                max_version = (str(int(major) + 1), minor, patch), '200'
 
-                if __v_type__ == 'minor':
-                    max_version = (major, str(int(minor) + 1), patch), '200'
+            if __v_type__ == 'minor':
+                max_version = (major, str(int(minor) + 1), patch), '200'
 
-                if __v_type__ == 'patch':
-                    patch = str(int(patch) + 1) + patch
-                    max_version = (major, minor, patch), '200'
+            if __v_type__ == 'patch':
+                patch = str(int(patch) + 1) + patch
+                max_version = (major, minor, patch), '200'
     except:
         return (), '404'
 

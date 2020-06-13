@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from helpers.retrieve_v3 import resolve_version
+from helpers.retrieve_v3_semver import resolve_version
 
 app = Flask(__name__)
 message = """
@@ -14,7 +14,7 @@ message = """
 error_message = """
     <div style="background-color:Tomato; color:white; text-align: center;">
     <h1>Error 404</h1>
-    <h2> <i> It happened due to or your request path was not valid either the mentioned package not found. </i> </h2>
+    <h2> <i> It happened due to either your request path was not valid or the mentioned package not found. </i> </h2>
     <h2> <mark>Try again!</mark></h2>
     <br />
     <hr /> 
@@ -29,7 +29,7 @@ def index():
 
 @app.route('/api/<package_name>/<v_type>/json')
 def handle_version(package_name, v_type):
-    answer, code = resolve_version(package_name, v_type)
+    answer, code = resolve_version(package_name.lower(), v_type.lower())
     if code == '404':
         return message + error_message, 404
     else:

@@ -1,5 +1,4 @@
-from flask import Flask
-import json
+from flask import Flask, jsonify
 from helpers.retrieve_v3 import resolve_version
 
 app = Flask(__name__)
@@ -24,8 +23,8 @@ def handle_version(package_name, v_type):
     if code == '404':
         return "404 not found."
     else:
-        return json.dumps(answer)
+        return jsonify(answer)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

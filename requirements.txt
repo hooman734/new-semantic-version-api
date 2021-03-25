@@ -43,7 +43,7 @@ PyQt5-sip==12.8.0
 pysmbc==1.0.20
 python-libtorrent==1.2.6
 pytoml==0.1.21
-PyYAML==5.3.1
+PyYAML==5.4
 rados==2.0.0
 rbd==2.0.0
 reportlab==3.5.42
